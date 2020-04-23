@@ -10,7 +10,7 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String abbrevation;
+    private String abbreviation;
     private String city;
     private String conference;
     private String division;
@@ -31,12 +31,13 @@ public class Team {
         this.id = id;
     }
 
-    public String getAbbrevation() {
-        return abbrevation;
+
+    public String getAbbreviation() {
+        return abbreviation;
     }
 
-    public void setAbbrevation(String abbrevation) {
-        this.abbrevation = abbrevation;
+    public void setAbbreviation(String abbrevation) {
+        this.abbreviation = abbrevation;
     }
 
     public String getCity() {
@@ -85,5 +86,20 @@ public class Team {
 
     public void setPlayers(List<Player> players) {
         this.players = players;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Team{" +
+                "id=" + id +
+                ", abbrevation='" + abbreviation + '\'' +
+                ", city='" + city + '\'' +
+                ", conference='" + conference + '\'' +
+                ", division='" + division + '\'' +
+                ", full_name='" + full_name + '\'' +
+                ", name='" + name + '\'' +
+                ", players=" + players +
+                '}';
     }
 }

@@ -23,9 +23,9 @@ public class TeamTest {
     @Test
     public void abbreviationGetterSetterTest(){
         Team team = new Team();
-        team.setAbbrevation("abbreviation");
+        team.setAbbreviation("abbreviation");
 
-        String expected = team.getAbbrevation();
+        String expected = team.getAbbreviation();
         String actual = "abbreviation";
 
         Assert.assertEquals(expected,actual);
@@ -53,10 +53,10 @@ public class TeamTest {
     @Test
     public void divisionGetterSetterTest(){
         Team team = new Team();
-        team.setConference("conference");
+        team.setDivision("division");
 
-        String expected = team.getConference();
-        String actual = "conference";
+        String expected = team.getDivision();
+        String actual = "division";
 
         Assert.assertEquals(expected,actual);
     }
