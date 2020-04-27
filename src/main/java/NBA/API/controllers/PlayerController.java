@@ -42,7 +42,10 @@ public class PlayerController {
             Long teamId = team.getId();
             List<Player> players = team.getPlayers();
 
-
+            HttpResponse<String> response1 = Unirest.get("https://free-nba.p.rapidapi.com/players?page=0&per_page=25")
+                    .header("x-rapidapi-host", "free-nba.p.rapidapi.com")
+                    .header("x-rapidapi-key", "5a87be5815mshdb4b1c83761247fp139fabjsn922a1206fa25")
+                    .asString();
 
             if (players.size() > 0) {
                 return new ResponseEntity<>(players, HttpStatus.OK);
