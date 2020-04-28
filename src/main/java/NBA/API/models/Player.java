@@ -16,8 +16,12 @@ public class Player {
     private Integer height_inches;
     private Integer weight_pounds;
 
+
     @ManyToOne(fetch = FetchType.EAGER, cascade =CascadeType.ALL)
     private Team team;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade =CascadeType.ALL)
+    private PlayerList playerList;
 
     public Player() {
     }
@@ -84,5 +88,13 @@ public class Player {
 
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    public PlayerList getPlayerList() {
+        return playerList;
+    }
+
+    public void setPlayerList(PlayerList playerList) {
+        this.playerList = playerList;
     }
 }

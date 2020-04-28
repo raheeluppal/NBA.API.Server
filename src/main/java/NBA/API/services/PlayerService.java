@@ -1,5 +1,6 @@
 package NBA.API.services;
 
+import NBA.API.models.Player;
 import NBA.API.repositories.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,5 +13,9 @@ public class PlayerService {
     @Autowired
     public PlayerService(PlayerRepository repo){
         this.repo = repo;
+    }
+
+    public Player save(Player player){
+        return repo.save(player);
     }
 }
