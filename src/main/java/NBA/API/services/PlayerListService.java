@@ -1,6 +1,7 @@
 package NBA.API.services;
 
 import NBA.API.models.PlayerList;
+import NBA.API.models.Team;
 import NBA.API.repositories.PlayerListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,12 @@ public class PlayerListService {
         this.repo = repo;
     }
 
-    public PlayerList save(PlayerList playerList){
+    public PlayerList saveByTeamId(PlayerList playerList, Team team){
         return repo.save(playerList);
+    }
+
+    public PlayerList findByTeamId(){
+
+        return null;
     }
 }
