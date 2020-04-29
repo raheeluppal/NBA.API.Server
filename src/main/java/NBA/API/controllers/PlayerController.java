@@ -80,7 +80,6 @@ public class PlayerController {
                             players.add(p);
                         }
                     }
-
                 }
                 if (players.size() > 0) {
 

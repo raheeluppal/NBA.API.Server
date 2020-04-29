@@ -1,9 +1,9 @@
 package NBA.API.repositories;
 
-import NBA.API.models.Player;
+import NBA.API.models.PlayerList;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PlayerRepository extends JpaRepository<Player,Long> {
+public interface PlayerListRepository extends JpaRepository<PlayerList, Long> {
 }
