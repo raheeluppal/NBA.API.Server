@@ -1,40 +1,50 @@
 package NBA.API.services;
 
-import NBA.API.models.Player;
 import NBA.API.models.PlayerList;
 import NBA.API.models.Team;
 import NBA.API.repositories.PlayerListRepository;
+import NBA.API.repositories.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.Collection;
+
 
 @Service
 public class PlayerListService {
 
-    private PlayerListRepository repo;
+    private final PlayerListRepository repo;
+    private final TeamRepository teamRepo;
 
     @Autowired
-    public PlayerListService(PlayerListRepository repo){
+    public PlayerListService(PlayerListRepository repo, TeamRepository teamRepo){
         this.repo = repo;
+        this.teamRepo = teamRepo;
     }
 
     public PlayerList saveByTeamId(PlayerList playerList){
-//        List<Player> plData = playerList.getData();
-//        for(Player p : plData){
-//            p.getTeam().getId();
-//        }
-        return repo.save(playerList);
+        boolean found = false;
+        if(playerList.getTeamId() != null) {
+            for (Team t : teamRepo.findAll()){
+                if (t != null && playerList.getTeamId() != null){
+                    if(t.getId().equals(playerList.getTeamId())){
+                        playerList.setTeamId(t.getId());
+                        found = true;
+                        break;
+                    }
+                }
+            }
+        }
+        if (!found) {
+            if (playerList.getTeamId() == null) {
+                Long temp = playerList.getTeamId();
+                teamRepo.save(playerList.getTeamById(temp));
+            }
+        }
+        return this.repo.save(playerList);
     }
 
-    public Optional<Player> findByTeamId(Player player){
-//        List<Player> plData = playerList.getData();
-//        for(Player p : plData){
-//            p.getTeam().getId();
-//        }
-//        return repo.findByTeamId(player.getTeam().getId());
-        return Optional.empty();
+    public Collection<PlayerList> findByTeamId(Long teamId){
+        return repo.findByTeamId(teamId);
     }
 }
